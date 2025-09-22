@@ -1,0 +1,129 @@
+<!"""
+CAR RENTAL SERVICE - MINI PROJECT KITS's (CSE)
+
+Developed by:
+Batch 12, Section A
+- T. Jayasree (21281A0511)
+- R. Rakshitha (21281A0520)
+- S. Surya Nivas Reddy (21281A0553)
+- B. Krishnaveni (21281A0559)
+
+For any queries, please contact: 7093220647
+""">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Star Car Rentals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .feedback-list {
+            background: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .feedback-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .feedback-item:last-child {
+            border-bottom: none;
+        }
+        .feedback-item h3 {
+            margin: 0 0 5px 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .feedback-item p {
+            margin: 0;
+            color: #555;
+        }
+
+        header1 {
+            background-color: rgba(0, 0, 227, 0.721);
+            color: black;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            font-family: 'Arial Black', Gadget, sans-serif;
+            letter-spacing: 1px;
+            color: white;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #ffeb3b;
+        }
+
+    </style>
+</head>
+<body>
+    <header1>
+        <div class="logo">CAR RENTAL SERVICES</div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('admin_dashboard') }}">Home</a></li>
+                <li><a href="{{ url_for('admin_orders') }}">orders</a></li>
+                <li><a href="{{ url_for('feed_back') }}">feed_backs</a></li>
+            </ul>
+        </nav>
+        
+    </header1>
+    <header>
+        <h1>Customer Feedback</h1>
+    </header>
+    <div class="container">
+        <div class="feedback-list">
+            {% for feedback in feedbacks %}
+            <div class="feedback-item">
+                <h3>{{ feedback.name }} ({{ feedback.email }})</h3>
+                <p>{{ feedback.message }}</p>
+            </div>
+            {% else %}
+            <p>No feedback available yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

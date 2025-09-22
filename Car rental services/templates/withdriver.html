@@ -1,0 +1,184 @@
+<!"""
+CAR RENTAL SERVICE - MINI PROJECT KITS's (CSE)
+
+Developed by:
+Batch 12, Section A
+- T. Jayasree (21281A0511)
+- R. Rakshitha (21281A0520)
+- S. Surya Nivas Reddy (21281A0553)
+- B. Krishnaveni (21281A0559)
+
+For any queries, please contact: 7093220647
+""">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders Page</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/images/imag.jpeg');
+            background-size: cover;
+            background-position: left;
+            background-attachment: fixed;
+            background-color: white;
+        }
+        
+        header {
+            background-color: rgba(0, 0, 227, 0.721);
+            color: black;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+            .logo {
+                font-size: 32px;
+                font-weight: bold;
+                font-family: 'Arial Black', Gadget, sans-serif;
+                letter-spacing: 1px;
+                color: white;
+            }
+            nav ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+            }
+            nav ul li {
+                margin-left: 20px;
+            }
+            nav ul li a {
+                color: #fff;
+                text-decoration: none;
+                font-size: 18px;
+                transition: color 0.3s ease;
+            }
+            nav ul li a:hover {
+                color: #ffeb3b;
+            }
+            
+        .footer {
+            background-color: black;
+            color: black;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 0px 10px 0px #000;
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .menu {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .menu a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">CAR RENTAL SERVICES</div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('admin_dashboard') }}">Home</a></li>
+                <li><a href="{{ url_for('admin_orders') }}">orders</a></li>
+                <li><a href="{{ url_for('feed_back') }}">feed_backs</a></li>
+            </ul>
+        </nav>
+        
+    </header>
+    
+    <div class="container">
+        
+        <!-- Menu -->
+        <div class="menu">
+            <a href="{{ url_for('admin_orders') }}">Self Bookings</a>
+            <a href="{{ url_for('withdriver') }}">Bookings with Driver</a>
+        </div>
+        <h2>with Driver Booking Orders</h2>
+        <!-- Orders Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Driver name</th>
+                    <th>Pickup Date</th>
+                    <th>Dropoff Date</th>
+                    <th>Car Model</th>
+                    <th>payment_UTR</th>
+                    <th>Additional Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order.name }}</td>
+                    <td>{{ order.email }}</td>
+                    <td>{{ order.phone }}</td>
+                    <td>{{ order.driver_name }}</td>
+                    <td>{{ order.pickup_date }}</td>
+                    <td>{{ order.dropoff_date }}</td>
+                    <td>{{ order.car_model }}</td>
+                    <td>{{order.payment_UTR}}</td>
+                    <td>{{ order.notes }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if not orders %}
+        <p style="text-align:center;">No bookings available.</p>
+        {% endif %}
+    </div>
+
+    <footer class="footer">
+        © 2024 STAR CarRentals
+    </footer>
+</body>
+</html>

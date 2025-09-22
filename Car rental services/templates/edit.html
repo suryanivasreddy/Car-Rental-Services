@@ -1,0 +1,123 @@
+<!"""
+CAR RENTAL SERVICE - MINI PROJECT KITS's (CSE)
+
+Developed by:
+Batch 12, Section A
+- T. Jayasree (21281A0511)
+- R. Rakshitha (21281A0520)
+- S. Surya Nivas Reddy (21281A0553)
+- B. Krishnaveni (21281A0559)
+
+For any queries, please contact: 7093220647
+""">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Car Details</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/images/imag.jpeg');
+            background-size: cover;
+            background-position: left;
+            background-attachment: fixed;
+            background-color: white;
+        }
+
+        .container {
+            width: 50%;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px #000;
+            margin-top: 50px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="number"], input[type="file"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .back-btn {
+            background-color: #555;
+            color: white;
+            padding: 10px 20px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Car Details</h2>
+        <form action="{{ url_for('update_car', car_id=car['_id']) }}" method="POST" enctype="multipart/form-data">
+            <label for="name">Car Name:</label>
+            <input type="text" id="name" name="name" value="{{ car['name'] }}" required>
+
+            <label for="image">Car Photo (Optional):</label>
+            <input type="file" id="image" name="image">
+
+            <label for="price">Price per Day (₹):</label>
+            <input type="number" id="price" name="price" value="{{ car['price'] }}" required>
+
+            <label for="mileage">Mileage (km/l):</label>
+            <input type="number" id="mileage" name="mileage" value="{{ car['mileage'] }}" required>
+
+            <label for="driver_name">Driver Name:</label>
+            <input type="text" id="driver_name" name="driver_name" value="{{ car['driver_name'] }}" required>
+
+            <label for="driver_experience">Driver Experience (years):</label>
+            <input type="number" id="driver_experience" name="driver_experience" value="{{ car['driver_experience'] }}" required>
+
+            <label for="driver_price">Driver Price per Day (₹):</label>
+            <input type="number" id="driver_price" name="driver_price" value="{{ car['driver_price'] }}" required>
+
+            <label for="notes">Additional Notes:</label>
+            <textarea id="notes" name="notes">{{ car['notes'] }}</textarea>
+
+            <button type="submit">Update Car</button>
+        </form>
+
+        <a href="{{ url_for('admin_dashboard') }}">
+            <button class="back-btn">Back to Dashboard</button>
+        </a>
+    </div>
+</body>
+</html>

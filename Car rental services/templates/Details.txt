@@ -1,0 +1,12 @@
+"""
+CAR RENTAL SERVICE - MINI PROJECT KITS's (CSE)
+
+Developed by:
+Batch 12, Section A
+- T. Jayasree (21281A0511)
+- R. Rakshitha (21281A0520)
+- S. Surya Nivas Reddy (21281A0553)
+- B. Krishnaveni (21281A0559)
+
+For any queries, please contact: 7093220647
+"""

@@ -1,0 +1,156 @@
+<!"""
+CAR RENTAL SERVICE - MINI PROJECT KITS's (CSE)
+
+Developed by:
+Batch 12, Section A
+- T. Jayasree (21281A0511)
+- R. Rakshitha (21281A0520)
+- S. Surya Nivas Reddy (21281A0553)
+- B. Krishnaveni (21281A0559)
+
+For any queries, please contact: 7093220647
+""">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/images/carimg.png');
+            background-size: cover;
+            background-position: left;
+            background-attachment: fixed;
+            background-color: white;
+        }
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+
+        .toast.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @-webkit-keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @-webkit-keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+
+        .success-toast {
+            background-color: green;
+        }
+
+        .error-toast {
+            background-color: red;
+    </style>
+    <script>
+        
+        function showToast(message, type) {
+            let toast = document.getElementById("toast");
+            toast.className = "toast show " + type + "-toast";
+            toast.innerHTML = message;
+            
+            setTimeout(function() {
+                toast.className = toast.className.replace("show", "");
+            }, 3000);
+        }
+    </script>
+</head>
+<body>
+    <br><br><br>
+    <form action="{{ url_for('register') }}" method="post" name="form">
+        <table align="center" frame="box" cellspacing="10" cellpadding="3">
+            <tr>
+                <td align="center" colspan="2"><h2><u>REGISTRATION</u></h2></td>
+            </tr>
+            <tr>
+                <th colspan="2" align="center"><h3>Welcome to Car Rental Services</h3></th>
+            </tr>
+            <tr>
+                <th>Name:</th>
+                <th><input type="text" name="user"></th>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <th><input type="text" name="email"></th>
+            </tr>
+            <tr>
+                <th>Password:</th>
+                <th><input type="password" name="pwd"></th>
+            </tr>
+            <tr>
+                <th>Re-enter Password:</th>
+                <th><input type="password" name="rpwd"></th>
+            </tr>
+            <tr>
+                <th>Gender:</th>
+                <th>
+                    Male <input type="radio" name="r" value="male">
+                    Female <input type="radio" name="r" value="female">
+                </th>
+            </tr>
+            <tr>
+                <th>Mobile No:</th>
+                <th><input type="text" name="phn"></th>
+            </tr>
+            <tr>
+                <th>Address:</th>
+                <th><textarea rows="5" name="address"></textarea></th>
+            </tr>
+            <tr>
+                <th colspan="2" align="center">
+                    <input type="submit" value="Submit">
+                    <input type="reset" value="Reset">
+                </th>
+            </tr>
+        </table>
+    </form>
+    
+    <div id="toast" class="toast"></div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <script>
+                let message = "{{ messages[0][1] }}";  // Access the message
+                let type = "{{ messages[0][0] }}";     // Access the category (success or error)
+                showToast(message, type);
+            </script>
+        {% endif %}
+    {% endwith %}
+
+
+    <div align="center">Already have an account? <a href="{{ url_for('login') }}">Log in</a></div>
+    <div align="center"><a href="{{ url_for('dashboard') }}">Back to Home</a></div>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!"""
+CAR RENTAL SERVICE - MINI PROJECT KITS's (CSE)
+
+Developed by:
+Batch 12, Section A
+- T. Jayasree (21281A0511)
+- R. Rakshitha (21281A0520)
+- S. Surya Nivas Reddy (21281A0553)
+- B. Krishnaveni (21281A0559)
+
+For any queries, please contact: 7093220647
+""">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Car</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 50%;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 0px 10px 0px #000;
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        input[type="text"], input[type="email"], input[type="date"], input[type="number"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+    <script>
+        function showSuccessAndRedirect() {
+            alert('car is added Successful!');
+            window.location.href = "{{ url_for('admin_dashboard') }}";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>New Car adding Form</h2>
+
+        <form action="{{ url_for('add_car') }}" method="POST" enctype="multipart/form-data">
+
+            <table>
+                <tr>
+                    <th>Car Name:</th>
+                    <td><input type="text" name="name" required></td>
+                </tr>
+                <tr>
+                    <th>image:</th>
+                    <td><input type="file" name="image" required></td>
+                </tr>
+                <tr>
+                    <th>Price per day:</th>
+                    <td><input type="text" name="price" required></td>
+                </tr>
+                <tr>
+                    <th>Mileage:</th>
+                    <td><input type="text" name="mileage" required></td>
+                </tr>
+                <tr>
+                    <th>Driver name:</th>
+                    <td><input type="text" name="driver_name" required></td>
+                </tr>
+                <tr>
+                    <th>With Driver price per day:</th>
+                    <td><input type="text" name="driver_price" required></td>
+                </tr>
+                <tr>
+                    <th>Driver experience:</th>
+                    <td><input type="text" name="driver experience" required></td>
+                </tr>
+                <tr>
+                    <th>Additional Notes:</th>
+                    <td><textarea name="notes" rows="4"></textarea></td>
+                </tr>
+            </table>
+            <div style="text-align: center;">
+                <input type="submit" value="ADD Now">
+            </div>
+        </form>
+    </div>
+    <script>
+        function showSuccessAndRedirect() {
+            // Optionally, you could use AJAX to submit the form data and then show the success message
+            alert('added Successful!');
+            // Redirect to another page
+            window.location.href = "{{ url_for('admin_dashboard') }}";
+            // Prevent the default form submission
+            return false;
+        }
+    </script>
+</body>
+</html>

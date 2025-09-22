@@ -1,0 +1,259 @@
+<!"""
+CAR RENTAL SERVICE - MINI PROJECT KITS's (CSE)
+
+Developed by:
+Batch 12, Section A
+- T. Jayasree (21281A0511)
+- R. Rakshitha (21281A0520)
+- S. Surya Nivas Reddy (21281A0553)
+- B. Krishnaveni (21281A0559)
+
+For any queries, please contact: 7093220647
+""">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Star Car Rentals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/images/imag.jpeg');
+            background-size: cover;
+            background-position: left;
+            background-attachment: fixed;
+            background-color: white;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background-color: rgba(0, 0, 227, 0.721);
+            color: black;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            font-family: 'Arial Black', Gadget, sans-serif;
+            letter-spacing: 1px;
+            color: white;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+       
+        .contact-info {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .contact-details {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .map-container {
+            flex: 1;
+        }
+        .contact-info h2 {
+            margin-top: 0;
+        }
+        .contact-info a {
+            color: #333;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        .social-links a {
+            margin-right: 15px;
+        }
+        .social-links a img {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+        }
+        .contact-form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .contact-form button {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background: #555555;
+        }
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+
+        .toast.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @-webkit-keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @-webkit-keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+
+        .success-toast {
+            background-color: green;
+        }
+
+        .error-toast {
+            background-color: red;
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">CAR RENTAL SERVICES</div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('dashboard') }}">Home</a></li>
+                <li><a href="{{ url_for('about_us') }}">About Us</a></li>
+                <li><a href="{{ url_for('carlists') }}">Car Lists</a></li>
+                <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+                {% if logged_in %}
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+            {% endif %}
+            </ul>
+        </nav>
+        
+    </header>
+    <div class="container">
+        <div class="contact-info">
+            <div class="contact-details">
+                <h2>Contact Information</h2>
+                <p>Email: <a href="mailto:support@carrentalservices.com">support@carrentalservices.com</a></p>
+                <p>Phone: 9885065784</p>
+                <p>Address: Subedari, Warangal,Telangana</p>
+                <h3>Customer Support Hours:</h3>
+                <p>Monday to Friday: 9:00 AM – 6:00 PM</p>
+                <p>Saturday: 10:00 AM – 4:00 PM</p>
+                <p>Sunday: Closed</p>
+    
+                <h3>Connect with Us:</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/CarRentalServices" target="_blank">Facebook: facebook.com/CarRentalServices</a><br>
+                    <a href="https://www.instagram.com/CarRentalServices" target="_blank">Instagram: instagram.com/CarRentalServices</a>
+                </div>
+            </div>
+                <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d131468.5293780015!2d78.9599068539487!3d18.36687406362839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1725953348999!5m2!1sen!2sin" width="500" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        <div class="contact-form">
+            <h2>Get in Touch</h2>
+            <p>For any inquiries related to booking a vehicle or listing your car, please reach out to us using the contact details above or fill out the form below. Our team is dedicated to ensuring you have the best experience possible.</p>
+            <form action="#" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+  <!-- Toast notification container -->
+  <div id="toast" class="toast"></div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+          <script>
+              let toastMessage = "";
+              let toastClass = "";
+              {% for category, message in messages %}
+                  toastMessage = "{{ message }}";
+                  toastClass = "{{ category }}-toast";  // Assuming category is either 'success' or 'error'
+              {% endfor %}
+
+              // Show toast notification
+              let toast = document.getElementById("toast");
+              toast.className = "toast show " + toastClass;
+              toast.innerHTML = toastMessage;
+
+              // Hide the toast after 3 seconds
+              setTimeout(function(){ 
+                  toast.className = toast.className.replace("show", ""); 
+              }, 3000);
+          </script>
+      {% endif %}
+{% endwith %}
+</body>
+</html>

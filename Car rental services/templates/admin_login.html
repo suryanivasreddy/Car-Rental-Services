@@ -1,0 +1,65 @@
+<!"""
+CAR RENTAL SERVICE - MINI PROJECT KITS's (CSE)
+
+Developed by:
+Batch 12, Section A
+- T. Jayasree (21281A0511)
+- R. Rakshitha (21281A0520)
+- S. Surya Nivas Reddy (21281A0553)
+- B. Krishnaveni (21281A0559)
+
+For any queries, please contact: 7093220647
+""">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Rental Services - admin_Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/images/carimg.png');
+            background-size: cover;
+            background-position: left;
+            background-attachment: fixed;
+            background-color: white;
+        }
+        .error-message {
+            color: red;
+            font-weight: bold;
+            margin: 10px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div align="right">
+        <center>
+            <h1 style="color: red; font-family: verdana;"><u>CAR RENTAL SERVICES</u></h1>
+            <h2>Admin Login </h2>
+        </center>
+        <center>
+            <form action="{{ url_for('admin_login')}}" method="post" name="log">
+                {% if error_message %}
+                    <div class="error-message">{{ error_message }}</div>
+                {% endif %}
+                <table frame="box" align="center" cellspacing="10" cellpadding="6">
+                    <tr>
+                        <th><input type="text" name="adminname" placeholder="adminname"></th>
+                    </tr>
+                    <tr>
+                        <th><input type="password" name="pwd" placeholder="Password"></th>
+                    </tr>
+                    <tr>
+                        <th colspan="2" align="center">
+                            <input type="submit" value="Login">
+                        </th>
+                    </tr>
+                </table>
+            </form>
+        </center>
+    </div>
+    <div align="center"> <a href="{{ url_for('dashboard') }}">Home</a></div>
+</body>
+</html>

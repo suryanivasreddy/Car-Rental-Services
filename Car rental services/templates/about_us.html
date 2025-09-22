@@ -1,0 +1,185 @@
+<!"""
+CAR RENTAL SERVICE - MINI PROJECT KITS's (CSE)
+
+Developed by:
+Batch 12, Section A
+- T. Jayasree (21281A0511)
+- R. Rakshitha (21281A0520)
+- S. Surya Nivas Reddy (21281A0553)
+- B. Krishnaveni (21281A0559)
+
+For any queries, please contact: 7093220647
+""">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us Us - Car Rental Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/images/imag.jpeg');
+            background-size: cover;
+            background-position: left;
+            background-attachment: fixed;
+            background-color: white;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background-color: rgba(0, 0, 227, 0.721);
+            color: black;
+            padding: 30px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            font-family: 'Arial Black', Gadget, sans-serif;
+            letter-spacing: 1px;
+            color: white;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content {
+            padding: 20px;
+            position: absolute;
+            top: 100px; /* Adjust based on header height */
+            left: 20px;
+            z-index: 10; /* Ensures it's above other content */
+            background-color: rgba(255, 255, 255, 0.8); /* Light background for readability */
+            border-radius: 8px; /* Rounded corners */
+            margin: 20px;
+        }
+        .about_site {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .about_site h2 {
+            margin-top: 0;
+        }
+        .about_site a {
+            color: #333;
+            text-decoration: none;
+        }
+        .about_site a:hover {
+            text-decoration: underline;
+        }
+        .social-links a {
+            margin-right: 15px;
+        }
+        .social-links a img {
+            width: 24px;
+            height: 24px;
+            vertical-align: middle;
+        }
+        .contact-form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .contact-form button {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background: #555555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">CAR RENTAL SERVICES</div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('dashboard') }}">Home</a></li>
+                <li><a href="{{ url_for('about_us') }}">About Us</a></li>
+                <li><a href="{{ url_for('carlists') }}">Car Lists</a></li>
+                <li><a href="{{ url_for('contact_us') }}">Contact Us</a></li>
+                {% if logged_in %}
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        
+    </header>
+    <div class="container">
+        <div class="about_site">
+            <h1>About Us</h1>
+            <p>Welcome to Car Rental Services! We are dedicated to providing top-quality car rental services to meet your needs. Our vehicles ensures that you find the perfect car for any occasion, whether it's a business trip, family vacation, or special event.</p>
+            <p>Our team is committed to delivering excellent customer service and making your rental experience smooth and hassle-free. With our user-friendly booking system, competitive rates, and flexible rental options, we strive to offer you the best value and convenience.</p>
+            <p>Thank you for choosing Car Rental Services. We look forward to serving you and ensuring you have a pleasant journey with us!</p>
+        </div>
+        <div class="about_site">
+        <h2>About Car Rental Services</h2>
+        <p>Car Rental Services is a revolutionary platform connecting car owners directly with renters, offering a convenient and affordable peer-to-peer car rental experience. We're bridging the gap between those seeking reliable transportation and those looking to monetize their unused vehicles.</p>
+        </div>
+        <div class="about_site">
+            <h2>How it Works</h2>
+            <ul>
+                <li><strong>List Your Car:</strong> Car owners can easily list their vehicles on our platform, specifying details like location, availability, and rental rates.</li>
+                <li><strong>Find Your Ride:</strong> Renters can search for cars based on their preferences, location, and desired rental period.</li>
+                <li><strong>Book and Connect:</strong> Once you find the perfect car, simply book it and connect directly with the car owner to finalize the rental details.</li>
+            </ul>
+        </div>
+        <div class="about_site">
+            <h2>Why Choose Car Rental Services</h2>
+            <ul>
+                <li><strong>Affordability:</strong> Enjoy competitive rental rates without the overhead costs of traditional rental agencies.</li>
+                <li><strong>Flexibility:</strong> Rent cars on your terms, with flexible pick-up and drop-off options.</li>
+                <li><strong>Convenience:</strong> Connect directly with car owners for a personalized experience.</li>
+                <li><strong>Trust and Safety:</strong> Benefit from our secure platform and verification process.</li>
+            </ul>
+        
+            <p>Join the Car Rental Services community today and experience the future of car rental!</p>
+        
+        </div>
+        <div class="about_site">
+             <a href="home.html"> <<-BACK</a>
+        </div>
+           
+        </div>
+    </div>
+</body>
+</html>
